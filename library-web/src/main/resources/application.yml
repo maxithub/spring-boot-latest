@@ -8,15 +8,18 @@ spring:
     cache: false
 #  main:
 #    allow-bean-definition-overriding: true
-
-security:
-  oauth2:
-    client:
-      client-id: trusted-app
-      client-secret: secret
-      access-token-uri: http://localhost:8005/oauth/token
-      scope: ['read', 'write']
-      grant-type: client_credentials
+  resources:
+    chain:
+      strategy:
+        content:
+          enabled: true
+          paths: /webjars/**, /js/**, /css/** # Make sure the webjars folders are included
+      enabled: true
+    cache:
+      cachecontrol:
+        cache-public: true
+        max-age: 365D
+    static-locations: classpath:/META-INF/resources/webjars/, classpath:/static/ # Make sure the webjars folders are included
 
 eureka:
   instance:
@@ -26,14 +29,8 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 
-feign:
-  client:
-    config:
-      default:
-        loggerLevel: full
-  hystrix:
-    enabled: true # Must turn this one, otherwise it will not work
-
-logging:
-  level:
-    max.lab: DEBUG
+zuul:
+  routes:
+    user-web:
+      path: /user/**
+      service-id: user-web
