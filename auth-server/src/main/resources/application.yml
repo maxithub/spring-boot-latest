@@ -1,0 +1,17 @@
+server:
+  port: 8005
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: auth-server
+
+# keytool -genkeypair -alias oauth2jwt -keyalg RSA -keypass secret -keystore keys.jks -storepass secret
+key-store:
+  path: classpath:keys.jks
+  alias: oauth2jwt
+  key-pass: secret
