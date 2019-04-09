@@ -1,4 +1,4 @@
-package max.lab.springboot.latest.libraryweb.config;
+package max.lab.springboot.latest.web.config;
 
 import org.springframework.boot.autoconfigure.web.ConditionalOnEnabledResourceChain;
 import org.springframework.context.annotation.Bean;

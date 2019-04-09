@@ -1,0 +1,39 @@
+server:
+  port: 8015
+
+spring:
+  application:
+    name: user-web
+  thymeleaf:
+    suffix: .html
+#  main:
+#    allow-bean-definition-overriding: true
+
+security:
+  oauth2:
+    client:
+      client-id: trusted-app
+      client-secret: secret
+      access-token-uri: http://localhost:8005/oauth/token
+      scope: ['read', 'write']
+      grant-type: client_credentials
+
+eureka:
+  instance:
+    hostname: localhost
+    port: ${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: full
+  hystrix:
+    enabled: true # Must turn this one, otherwise it will not work
+
+logging:
+  level:
+    max.lab: DEBUG
