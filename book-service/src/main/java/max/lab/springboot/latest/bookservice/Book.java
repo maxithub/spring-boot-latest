@@ -8,6 +8,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 public class Book {
     private Long id;
     private String isbn;

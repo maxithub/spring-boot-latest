@@ -14,8 +14,10 @@ public class BookController {
     @GetMapping("/books")
     public ResponseEntity<List<Book>> findAllBooks() {
         return ResponseEntity.ok(Arrays.asList(
-            new Book(1L, "1234-234-889", "Spring Boot 2.1.3", BigDecimal.valueOf(39.99), LocalDate.of(2018, 10, 9)),
-            new Book(2L, "8923-234-234", "Spring Cloud", BigDecimal.valueOf(19.99), LocalDate.of(2017, 1, 3))
+            Book.builder().id(1L).isbn("1234-234-889").title("Spring Boot 2.1.3")
+                    .price(BigDecimal.valueOf(39.99)).dateOfPublish(LocalDate.of(2018, 10, 9)).build(),
+            Book.builder().id(2L).isbn("8923-234-234").title("Spring Cloud")
+                    .price(BigDecimal.valueOf(19.99)).dateOfPublish(LocalDate.of(2017, 1, 3)).build()
         ));
     }
 
