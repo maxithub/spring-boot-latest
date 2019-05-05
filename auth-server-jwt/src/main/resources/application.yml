@@ -8,7 +8,7 @@ eureka:
 
 spring:
   application:
-    name: auth-server
+    name: auth-server-jwt
 
 # keytool -genkeypair -alias oauth2jwt -keyalg RSA -keypass secret -keystore keys.jks -storepass secret
 key-store:

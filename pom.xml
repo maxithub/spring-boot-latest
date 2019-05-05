@@ -16,7 +16,8 @@
 
 	<modules>
 		<module>eureka-server</module>
-		<module>auth-server</module>
+		<module>auth-server-jwt</module>
+		<module>oauth2-server-web</module>
 		<module>book-service</module>
 		<module>borrow-service</module>
 		<module>user-service</module>

@@ -1,0 +1,11 @@
+server:
+  port: 8017
+spring:
+  application:
+    name: oauth2-server-web
+security:
+  oauth2:
+    client:
+      client-id: client1
+      client-secret: secret
+
