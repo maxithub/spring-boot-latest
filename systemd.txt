@@ -1,0 +1,30 @@
+[Unit]
+Description=My Monitor Service
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+ExecStart=/home/ubuntu/monitor.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+
+----------------------------------------------------------------------------
+
+systemctl daemon-reload
+systemctl enable mymonitor.service
+systemctl start mymonitor
+
+----------------------------------------------------------------------------
+
+#!/bin/bash
+
+while true;
+do
+    echo "Running monitor..."
+    curl -o /dev/null -k https://blog.skbali.com &> /dev/null
+    sleep 75
+done
