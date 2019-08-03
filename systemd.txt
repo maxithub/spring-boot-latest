@@ -32,3 +32,4 @@ done
 ---------------------------------------------------------------------------
 
 https://www.freedesktop.org/software/systemd/man/systemd.service.html
+https://blog.skbali.com/2019/03/start-a-script-on-boot-using-systemd/
