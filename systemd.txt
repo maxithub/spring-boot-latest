@@ -1,13 +1,13 @@
 [Unit]
-Description=My Monitor Service
+Description=My Demo App
 After=network.target
 
 [Service]
-User=ubuntu
-Group=ubuntu
-ExecStart=/home/ubuntu/monitor.sh
-Restart=always
-RestartSec=5
+User=appadmin
+Group=app
+ExecStart=/appvol/linux-systemd/bounce.sh
+Type=oneshot
+RemainAfterExit=true
 
 [Install]
 WantedBy=multi-user.target
@@ -28,3 +28,7 @@ do
     curl -o /dev/null -k https://blog.skbali.com &> /dev/null
     sleep 75
 done
+
+---------------------------------------------------------------------------
+
+https://www.freedesktop.org/software/systemd/man/systemd.service.html
