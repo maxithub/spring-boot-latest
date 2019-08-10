@@ -1,0 +1,35 @@
+[Unit]
+Description=My Demo App
+After=network.target
+
+[Service]
+User=appadmin
+Group=app
+ExecStart=/appvol/linux-systemd/bounce.sh
+Type=oneshot
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
+
+----------------------------------------------------------------------------
+
+systemctl daemon-reload
+systemctl enable mymonitor.service
+systemctl start mymonitor
+
+----------------------------------------------------------------------------
+
+#!/bin/bash
+
+while true;
+do
+    echo "Running monitor..."
+    curl -o /dev/null -k https://blog.skbali.com &> /dev/null
+    sleep 75
+done
+
+---------------------------------------------------------------------------
+
+https://www.freedesktop.org/software/systemd/man/systemd.service.html
+https://blog.skbali.com/2019/03/start-a-script-on-boot-using-systemd/
