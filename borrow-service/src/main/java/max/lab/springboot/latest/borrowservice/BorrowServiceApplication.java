@@ -2,10 +2,13 @@ package max.lab.springboot.latest.borrowservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@EnableResourceServer
+//@EnableResourceServer
 @SpringBootApplication
+@EnableZuulProxy
+@EnableFeignClients
 public class BorrowServiceApplication {
 
 	public static void main(String[] args) {

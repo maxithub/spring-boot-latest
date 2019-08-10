@@ -1,6 +1,7 @@
 package max.lab.springboot.latest.oauth2serverweb;
 
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,5 +28,16 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .withUser("admin")
                 .password(passwordEncoder.encode("secret"))
                 .roles("ADMIN");
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.formLogin().and()
+                .authorizeRequests()
+                .antMatchers("/login")
+                .permitAll()
+                .and()
+                .authorizeRequests()
+                .anyRequest().hasRole("APP_CLIENT");
     }
 }

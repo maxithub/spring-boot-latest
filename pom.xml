@@ -24,5 +24,7 @@
 		<module>library-web</module>
 		<module>user-web</module>
 		<module>web-common</module>
+		<module>single-web</module>
+		<module>hazelcast-web-session</module>
 	</modules>
 </project>

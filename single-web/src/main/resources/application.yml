@@ -1,0 +1,16 @@
+server:
+  port: 8019
+spring:
+  application:
+    name: single-web
+security:
+  oauth2:
+    client:
+      client-id: client1
+      client-secret: secret
+      access-token-uri: http://localhost:8017/oauth/token
+      user-authorization-uri: http://localhost:8017/oauth/authorize
+    resource:
+      user-info-uri: http://localhost:8017/user/me
+
+

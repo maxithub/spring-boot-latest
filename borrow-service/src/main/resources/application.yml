@@ -19,3 +19,29 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+
+logging:
+  level:
+    max.lab.springboot.latest.borrowservice: DEBUG
+
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: headers
+  compression:
+#    request:
+#      enabled: true
+#      mime-types: application/json, application/xml
+    response:
+      enabled: true
+
+zuul:
+  routes:
+    book-api:
+      path: /book-api/**
+      service-id: book-service
+    user-api:
+      path: /user-api/**
+      service-id: user-service
