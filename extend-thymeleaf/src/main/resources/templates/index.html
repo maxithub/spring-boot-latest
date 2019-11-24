@@ -1,0 +1,58 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{~/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{~/webjars/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <!--<th:block layout:fragment="styles"></th:block>-->
+
+    <title>My Library</title>
+</head>
+<body>
+
+<h1>Books</h1>
+
+<div class="card">
+    <div class="card-body">
+        <form th:action="@{/}" method="get">
+            <div class="form-group">
+                <label for="txtName">Name</label>
+                <input type="text" class="form-control" id="txtName" name="name" placeholder="Enter Name" th:value="${param.name}">
+            </div>
+            <th th:replace="fragments/form-hidden-for-pagination (page=${bookPage})"></th>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+<div class="card">
+<table class="table">
+    <thead>
+    <tr>
+        <th th:replace="fragments/sortable-header (page=${bookPage}, column='id', text='ID')"></th>
+        <th th:replace="fragments/sortable-header (page=${bookPage}, column='title', text='Title')"></th>
+        <th th:replace="fragments/sortable-header (page=${bookPage}, column='price', text='Price')"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${bookPage.content}">
+        <th scope="row" th:text="${book.id}"></th>
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.price}"></td>
+    </tr>
+    </tbody>
+</table>
+<div th:replace="fragments/pagination (page=${bookPage})"></div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script th:src="@{~/webjars/jquery/3.3.1/dist/jquery.min.js}"></script>
+<script th:src="@{~/webjars/popper.js/1.14.7/dist/popper.min.js}"></script>
+<script th:src="@{~/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

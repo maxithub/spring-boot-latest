@@ -1,0 +1,20 @@
+<nav th:fragment="pagination (page)" xmlns:th="http://www.thymeleaf.org" th:if="${page.totalPages > 1}">
+    <ul class="pagination">
+        <li th:class="${'page-item ' + (page.hasPrevious() ? '' : 'disabled')}">
+            <a class="page-link" th:href="${#pg.getPageUrl(page.number-1)}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </li>
+        <li th:class="${'page-item ' + (page.number == (index-1) ? 'active' : '')}" th:each="index : ${#numbers.sequence(1, page.totalPages)}">
+            <a class="page-link" href="#" th:text="${index}" th:if="${page.number == (index-1)}"></a>
+            <a class="page-link" th:href="${#pg.getPageUrl(index-1)}" th:text="${index}" th:if="${page.number != (index-1)}"></a>
+        </li>
+        <li th:class="${'page-item ' + (page.hasNext() ? '' : 'disabled')}">
+            <a class="page-link" th:href="${#pg.getPageUrl(page.number+1)}"  aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </li>
+    </ul>
+</nav>

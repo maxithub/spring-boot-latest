@@ -1,0 +1,5 @@
+<th scope="col" th:fragment="sortableHeader (page, column, text)" xmlns:th="http://www.thymeleaf.org">
+    <a th:href="${#pg.getTableHeaderUrl(page, column)}" class="btn btn-link">
+        <span th:text="${text}"></span> <span th:class="${#pg.getTableHeaderIconClass(page, column)}" aria-hidden="true" th:if="${#pg.isSortingBy(page, column)}"></span>
+    </a>
+</th>

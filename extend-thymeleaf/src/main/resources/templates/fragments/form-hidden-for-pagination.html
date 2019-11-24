@@ -1,0 +1,7 @@
+<div th:fragment="formHiddenForPagination (page)" xmlns:th="http://www.thymeleaf.org">
+    <input type="hidden" name="column" th:value="${#pg.getSortingColumn(page)}" />
+    <input type="hidden" name="page" th:value="${page.number}" />
+    <input type="hidden" name="order" th:value="${#pg.getSortingOrder(page)}" />
+    <input type="hidden" name="size" th:value="${page.size}" />
+    <input type="hidden" name="reset" value="true">
+</div>

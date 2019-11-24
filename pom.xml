@@ -26,5 +26,6 @@
 		<module>web-common</module>
 		<module>single-web</module>
 		<module>hazelcast-web-session</module>
+		<module>extend-thymeleaf</module>
 	</modules>
 </project>
